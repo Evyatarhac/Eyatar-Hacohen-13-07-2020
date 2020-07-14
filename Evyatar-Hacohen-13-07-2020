@@ -1,0 +1,179 @@
+package limudim;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+	import static org.junit.Assert.*;
+
+	import java.util.ArrayList;
+
+	import org.junit.AfterClass;
+	import org.junit.BeforeClass;
+	import org.junit.Test;
+	import org.junit.experimental.theories.suppliers.TestedOn;
+	import org.openqa.selenium.By;
+	import org.openqa.selenium.SearchContext;
+	import org.openqa.selenium.WebDriver;
+	import org.openqa.selenium.WebElement;
+	import org.openqa.selenium.chrome.ChromeDriver;
+	import org.openqa.selenium.remote.RemoteWebDriver;
+
+
+	public class Herolo_project_Evyatar_1207 {
+
+		private RemoteWebDriver driver;
+		@BeforeClass// פנייה לכרומדרייבר פתיחה רחבה של החלונית
+		public static void setUpBeforeClass() throws Exception {
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\hacoh\\Desktop\\Evyatar\\automation\\chormdriver2//chromedriver.exe"); 
+			ChromeDriver driver = new ChromeDriver(); 
+			driver.manage().window().maximize();	
+		}
+		@AfterClass
+		public static void tearDownAfterClass() throws Exception {
+			driver.close();
+		}
+		@Test//פנייה לאתר
+		public void test1(){
+			driver = null;
+			driver.get("https://automation.herolo.co.il/");
+		}
+		
+		@Test// בדיקה חיובית של חלונית השארת פרטים
+		public void test2() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("Simon");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.com");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			driver.findElements (SearchContext)By.xpath("//*[@id=\"footer\"]/form/button").click();
+		}
+		@Test//  מיל לא נכון-בדיקה שלילית של חלונית השארת פרטים
+		public void test3() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("Simon");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.co");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"footer\"]/form/button"))).click();
+		}
+		@Test// בדיקה שלילית של חלונית השארת פרטים-רק מספר בשם
+		public void test4() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("111");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.co");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"footer\"]/form/button"))).click();
+		}
+		@Test// בדיקה חיובית של חלונית השארת פרטים-שם בעברית
+		public void test5() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("בן");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.co");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"footer\"]/form/button"))).click();
+		}
+		
+		@Test// לחיצה על טאב וואטסאפ ולעבור לטאב
+		public void test6() {
+			By driver;
+			driver.findElements((SearchContext) By.xpath("//*[@id=\"gatsby-focus-wrapper\"]/div/a[2]")))).click();
+			ArrayList<String> tabs2 = new ArrayList<String>
+			(((WebDriver) driver).getWindowHandles());
+			((WebDriver) driver).switchTo().window(tabs2.get(1));
+			Thread.sleep(3000);
+			driver.close();
+			((WebDriver) driver).switchTo().window(tabs2.get(0));			
+		}
+		@Test//חיפוש עבודות צד שמאל,לחיצת בדיקה.
+		public void test7() {
+			By driver;
+			driver.findElements(By.xpath("//*[@id=\"gatsby-focus-wrapper\"]/div/section[3]/div/div[3]/img")))).click();
+		}
+		@Test//לאחר גלילה של עמוד לחיצה על חץ ימין שמופיע בצד ימין ומעלה את הדף למעלה.
+		public void test8() {
+			By driver;
+			driver.findElements((SearchContext) By.xpath("//*[@id=\"gatsby-focus-wrapper\"]/div/a[1]")))).click();
+			}
+		@Test//    לחיצה על סמל פייסבוק, פותח טאב שמכיל  קישור מקולקל לפייסבוק
+		public void test9() {
+			By driver;
+			driver.findElements((SearchContext) By.xpath("//*[@id=\"section-contact\"]/section/div[2]/div/div[2]/div/a[3]")))).click();
+			ArrayList<String> tabs2 = new ArrayList<String>
+			(((WebDriver) driver).getWindowHandles());
+			((WebDriver) driver).switchTo().window(tabs2.get(1));
+			Thread.sleep(3000);
+			driver.close();
+			((WebDriver) driver).switchTo().window(tabs2.get(0));
+		}
+		@Test//    לחיצה על סמל כדור הארץ, פותח טאב שמכיל  קישור מקולקל לאתר אינטננט שלהם
+		public void test10() {
+			By driver;
+			 (driver.findElements((SearchContext) By.xpath("//*[@id=\"section-contact\"]/section/div[2]/div/div[2]/div/a[4]"))))).click();
+			ArrayList<String> tabs2 = new ArrayList<String>
+			(((WebDriver) driver).getWindowHandles());
+			((WebDriver) driver).switchTo().window(tabs2.get(1));
+			Thread.sleep(3000);
+			driver.close();
+			((WebDriver) driver).switchTo().window(tabs2.get(0));
+		}
+		@Test//    לחיצה על סמל לינקדאין, פותח טאב שמכיל  קישור עובד של לינקדאין
+		public void test11() {
+			By driver;
+			 (driver.findElements((SearchContext) By.xpath("//*[@id=\"section-contact\"]/section/div[2]/div/div[2]/div/a[1]"))))).click();
+			ArrayList<String> tabs2 = new ArrayList<String>
+			(((WebDriver) driver).getWindowHandles());
+			((WebDriver) driver).switchTo().window(tabs2.get(1));
+			Thread.sleep(3000);
+			driver.close();
+			((WebDriver) driver).switchTo().window(tabs2.get(0));
+		}
+		@Test//   לחיצה על המייל שמופיע למטה בפרטי הקשר של מתי קורלנד
+		public void test12() {
+			driver.findElementByLinkText("mati@herolo.co.il").click();
+		}
+		@Test//השארת פרטים נכונים בשדה "רוצה לשמוע עוד"
+		public void test13() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("Evy");
+			driver.findElement((SearchContext) By.name("company")).sendKeys("google");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.co");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"section-inputs\"]/div[3]/a"))).click();
+		}
+		@Test//השארת שם באותיות עבריות בשדה "רוצה לשמוע עוד"
+		public void test14() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("אבי");
+			driver.findElement((SearchContext) By.name("company")).sendKeys("google");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.co");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"section-inputs\"]/div[3]/a"))).click();
+		}
+		@Test//כתיבת מספרין בשדה שם  בשדה "רוצה לשמוע עוד"
+		public void test15() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("1456");
+			driver.findElement((SearchContext) By.name("company")).sendKeys("google");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.com");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"section-inputs\"]/div[3]/a"))).click();
+		}
+		@Test//כתיבת מייל לא נכון בשדה מייל בשדה "רוצה לשמוע עוד"
+		public void test16() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("Evy");
+			driver.findElement((SearchContext) By.name("company")).sendKeys("google");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.is");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("0529569851");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"section-inputs\"]/div[3]/a"))).click();
+		}
+		@Test// כתיבת אותיות בשדה מספר פל' בשדה רוצה לשמוע עוד"
+		public void test17() {
+			By driver = null;
+			driver.findElement((SearchContext) By.name("name")).sendKeys("Evy");
+			driver.findElement((SearchContext) By.name("company")).sendKeys("google");
+			driver.findElement((SearchContext) By.name("email")).sendKeys("Hacohenb@gmail.com");
+			driver.findElement((SearchContext) By.name("phone")).sendKeys("05הבvd");
+			((WebElement) driver.findElements((SearchContext) By.xpath("//*[@id=\"section-inputs\"]/div[3]/a"))).click();
+		}
+}
