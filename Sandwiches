@@ -1,0 +1,52 @@
+Package void 42;
+import java.util.Scanner;
+
+public class t3 { //t3 pages on phone - Sandwiches public static Scanner reader= new Scanner(System.in); public static void main(String[] args) {
+
+System.out.println("Please type 'y' for yellow cheese or 'w' for white cheese");
+String type_sand=reader.next();
+	
+	System.out.println("Please enter the number of sandwiches you want");
+	int num_sand=reader.nextInt();
+	
+	System.out.println("Please type 'yes' if you would like add ons , else type 'no'");
+	String add_on=reader.next();
+	int c=0;
+	while(num_sand!=0) {
+    	int sum=0;
+	c++;
+	if("y".equals(type_sand)) {
+	if("yes".equals(add_on)) {
+		sum=(num_sand*12+1*num_sand);
+		if(num_sand>=10) 
+	sum=(num_sand*12+1*num_sand)-20;}
+	if("no".equals(add_on)) 	{
+		sum=num_sand*10;
+	if(num_sand>=10) 
+    	sum=num_sand*12-20;}
+	}
+    if("w".equals(type_sand)) {
+    	if("yes".equals(add_on)) {
+    		sum=(num_sand*10+1*num_sand);
+    		if(num_sand>=10) 
+    sum=(num_sand*10+1*num_sand)-20;}
+    	if("no".equals(add_on)) { 
+    		sum=num_sand*10;
+    	if(num_sand>=10) 
+    		sum=num_sand*10-20;
+    		}
+    	}   
+	System.out.println(sum);
+	System.out.println("Please type either you wuold like 'yellow cheese' or 'white cheese' ");
+	type_sand=reader.next();
+	
+	System.out.println("Please enter the number of sandwiches you want");
+    num_sand=reader.nextInt();
+	
+	System.out.println("Please type 'yes' if you would like add ons , else type 'no'");
+    add_on=reader.next();
+
+	}
+	System.out.println("there have been "+c+" orders");
+}
+}
