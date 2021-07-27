@@ -1,0 +1,18 @@
+Vending Machine
+
+package Void1; import java.util.Scanner; public class t5 { //t5-pages on phone "Vending machine"
+
+public static Scanner reader= new Scanner(System.in);
+public static void main(String[] args) {
+	System.out.println("Please enter the name of the day");
+	String day=reader.next();
+    System.out.println("Please enter how much snackes and drinks are in the vending machine on "+day);	
+	int snacks=reader.nextInt();
+	int drinks=reader.nextInt();
+	double cash=0;
+	while(snacks>=5 || drinks>=5) {
+	System.out.println("Please enter 'a' if you would like a snack for 2.5 shekals ");
+	System.out.println("Please enter 'b' if you would like a drink for 4.5 shekals");	
+	System.out.println("Please enter 'c' if you would like a drink and a snack for 6.0 shekals");	
+char result=reader.next().charAt(0); while(result!='a'&&result!='b'&&result!='c') { System.out.println("invalid insert! please try again"); result=reader.next().charAt(0); }
+System.out.println("Please enter howw much items would you like from the product(limit 4)"); int num_s_d=reader.nextInt(); while(num_s_d>4) { System.out.println("you have inserted an invalid number of items! please try again"); num_s_d=reader.nextInt(); } if(result=='a') { cash=cash+2.5num_s_d; snacks=snacks-1num_s_d; } if(result=='b') { cash=cash+4.5num_s_d; drinks=drinks-1num_s_d; } if(result=='c') { cash=cash+6num_s_d; snacks=snacks-1num_s_d; drinks=drinks-1*num_s_d; } } System.out.println("The cash earned today is:"+cash); System.out.println("The number of snackes and drinks that remain are:"+snacks+", "+drinks); } }
